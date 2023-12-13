@@ -1,0 +1,14 @@
+// DOC
+https://angular.io/guide/setup-local
+
+// Setup
+npm install -g @angular/cli
+
+// Create new app
+ng new my-app
+
+// Using material
+https://material.angular.io/
+
+// you-tut
+https://youtu.be/4mKY_yDq64g?si=BM4yvOVPyWmw-NdL
