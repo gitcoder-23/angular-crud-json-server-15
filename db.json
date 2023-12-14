@@ -49,28 +49,16 @@
       "id": 11
     },
     {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "dob": "",
-      "gender": "",
-      "education": "",
-      "company": "",
-      "experience": "",
-      "package": "",
-      "id": 12
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "dob": "",
-      "gender": "",
-      "education": "",
-      "company": "",
-      "experience": "",
-      "package": "",
-      "id": 13
+      "firstName": "Nabo",
+      "lastName": "Rajpurohit",
+      "email": "john@yahoo.com",
+      "dob": "2023-12-15T18:30:00.000Z",
+      "gender": "female",
+      "education": "Intermediate",
+      "company": "BMW",
+      "experience": "10",
+      "package": "30",
+      "id": 14
     }
   ]
 }
