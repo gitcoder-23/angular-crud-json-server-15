@@ -89,9 +89,9 @@ export class EmpAddEditComponent implements OnInit {
       // console.log('formValue=>', this.empForm.value);
       this._empService.addNewEmployee(this.empForm.value).subscribe({
         next: (val: any) => {
-          // console.log('addval=>', val);
-          // alert(`Employee add success!`);
-          // When add done
+          console.log('addval=>', val);
+          alert(`Employee add success!`);
+          // When add done then -> true
 
           this._dialogRef.close(true);
           this.getEmployeeList();
