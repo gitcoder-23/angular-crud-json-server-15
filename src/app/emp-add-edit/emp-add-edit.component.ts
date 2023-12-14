@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeServiceService } from '../services/employee-service.service';
 import { DialogRef } from '@angular/cdk/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 export interface Education {
   id: number;
@@ -13,7 +14,7 @@ export interface Education {
   templateUrl: './emp-add-edit.component.html',
   styleUrls: ['./emp-add-edit.component.scss'],
 })
-export class EmpAddEditComponent {
+export class EmpAddEditComponent implements OnInit {
   // educationOld: string[] = ['Matric', 'Intermediate', 'Diploma', 'BTech'];
 
   empForm: FormGroup;
@@ -53,7 +54,7 @@ export class EmpAddEditComponent {
   constructor(
     private _fb: FormBuilder,
     private _empService: EmployeeServiceService,
-    private _dialogRef: DialogRef<EmpAddEditComponent>
+    private _dialogRef: MatDialogRef<EmpAddEditComponent>
   ) {
     this.empForm = this._fb.group({
       firstName: '',
@@ -68,14 +69,32 @@ export class EmpAddEditComponent {
     });
   }
 
+  getEmployeeList() {
+    this._empService.getAllEmployees().subscribe({
+      next: (res: any) => {
+        console.log('get-resp=>', res);
+      },
+      error: (err: any) => {
+        console.log('get-err=>', err);
+      },
+    });
+  }
+
+  ngOnInit() {
+    this.getEmployeeList();
+  }
+
   onEmpFormSubmit() {
     if (this.empForm.valid) {
       // console.log('formValue=>', this.empForm.value);
       this._empService.addNewEmployee(this.empForm.value).subscribe({
         next: (val: any) => {
-          console.log('addval=>', val);
-          alert(`Employee add success!`);
-          this._dialogRef.close();
+          // console.log('addval=>', val);
+          // alert(`Employee add success!`);
+          // When add done
+
+          this._dialogRef.close(true);
+          this.getEmployeeList();
         },
         error: (err: any) => {
           console.error('add-err=>', err);
@@ -83,10 +102,4 @@ export class EmpAddEditComponent {
       });
     }
   }
-
-  // ngOnInit() {
-  //   this.empForm = this._fb.group({
-
-  //   });
-  // }
 }

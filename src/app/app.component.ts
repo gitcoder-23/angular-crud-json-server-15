@@ -57,7 +57,16 @@ export class AppComponent implements OnInit {
   }
 
   openAddEditEmpForm() {
-    this._dialog.open(EmpAddEditComponent);
+    // this._dialog.open(EmpAddEditComponent);
+    // to manage after add
+    const dialogRef = this._dialog.open(EmpAddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val: any) => {
+        if (val) {
+          this.getEmployeeList();
+        }
+      },
+    });
   }
 
   getEmployeeList() {
@@ -80,6 +89,21 @@ export class AppComponent implements OnInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+
+  deleteAnEmployee(dId: number | string) {
+    if (window.confirm('Do you want?')) {
+      this._empService.deleteEmployee(dId).subscribe({
+        next: (res: any) => {
+          console.log('del-success=>', res);
+          // alert('Delete Success!');
+          this.getEmployeeList();
+        },
+        error: (err: any) => {
+          console.log('del-err=>', err);
+        },
+      });
     }
   }
 }
