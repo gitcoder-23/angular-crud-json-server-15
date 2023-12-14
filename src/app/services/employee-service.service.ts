@@ -16,6 +16,14 @@ export class EmployeeServiceService {
     return this._http.post('http://localhost:3089/employees', edata);
   }
 
+  // Edit an Employee
+
+  public editAnEmployee(edata: any, edId: number | string): Observable<any> {
+    // console.log('edata=>', edata);
+
+    return this._http.put(`http://localhost:3089/employees/${edId}`, edata);
+  }
+
   // Get list all employees
 
   public getAllEmployees(): Observable<any> {

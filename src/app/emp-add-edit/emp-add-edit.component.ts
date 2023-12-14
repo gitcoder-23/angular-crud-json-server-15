@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeServiceService } from '../services/employee-service.service';
 import { DialogRef } from '@angular/cdk/dialog';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 
 export interface Education {
   id: number;
@@ -54,7 +58,10 @@ export class EmpAddEditComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _empService: EmployeeServiceService,
-    private _dialogRef: MatDialogRef<EmpAddEditComponent>
+    private _dialogRef: MatDialogRef<EmpAddEditComponent>,
+
+    // For only Edit
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.empForm = this._fb.group({
       firstName: '',
@@ -82,24 +89,43 @@ export class EmpAddEditComponent implements OnInit {
 
   ngOnInit() {
     this.getEmployeeList();
+    // Edits
+    this.empForm.patchValue(this.data);
   }
 
   onEmpFormSubmit() {
     if (this.empForm.valid) {
-      // console.log('formValue=>', this.empForm.value);
-      this._empService.addNewEmployee(this.empForm.value).subscribe({
-        next: (val: any) => {
-          console.log('addval=>', val);
-          alert(`Employee add success!`);
-          // When add done then -> true
+      if (this.data) {
+        console.log('formValue=>', this.data);
+        this._empService
+          .editAnEmployee(this.empForm.value, this.data.id)
+          .subscribe({
+            next: (val: any) => {
+              console.log('updateVal=>', val);
+              alert(`Employee update success!`);
+              // When update done then -> true refresh the component
 
-          this._dialogRef.close(true);
-          this.getEmployeeList();
-        },
-        error: (err: any) => {
-          console.error('add-err=>', err);
-        },
-      });
+              this._dialogRef.close(true);
+            },
+            error: (err: any) => {
+              console.error('update-err=>', err);
+            },
+          });
+      } else {
+        // console.log('formValue=>', this.empForm.value);
+        this._empService.addNewEmployee(this.empForm.value).subscribe({
+          next: (val: any) => {
+            console.log('addval=>', val);
+            alert(`Employee add success!`);
+            // When add done then -> true
+
+            this._dialogRef.close(true);
+          },
+          error: (err: any) => {
+            console.error('add-err=>', err);
+          },
+        });
+      }
     }
   }
 }
