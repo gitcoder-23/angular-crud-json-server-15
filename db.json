@@ -1,3 +1,16 @@
 {
-  "employees": []
+  "employees": [
+    {
+      "firstName": "Kishor",
+      "lastName": "Thomson",
+      "email": "utest@yahoo.com",
+      "dob": "2023-12-14T18:30:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "company": "Google",
+      "experience": "10",
+      "package": "12",
+      "id": 1
+    }
+  ]
 }

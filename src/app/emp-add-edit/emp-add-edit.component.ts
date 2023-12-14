@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeeServiceService } from '../services/employee-service.service';
+import { DialogRef } from '@angular/cdk/dialog';
 
 export interface Education {
   id: number;
@@ -46,7 +48,13 @@ export class EmpAddEditComponent {
 
   // Service variable added in constructor
 
-  constructor(private _fb: FormBuilder) {
+  // Operation created services injected in constructor
+
+  constructor(
+    private _fb: FormBuilder,
+    private _empService: EmployeeServiceService,
+    private _dialogRef: DialogRef<EmpAddEditComponent>
+  ) {
     this.empForm = this._fb.group({
       firstName: '',
       lastName: '',
@@ -62,7 +70,17 @@ export class EmpAddEditComponent {
 
   onEmpFormSubmit() {
     if (this.empForm.valid) {
-      console.log('formValue=>', this.empForm.value);
+      // console.log('formValue=>', this.empForm.value);
+      this._empService.addNewEmployee(this.empForm.value).subscribe({
+        next: (val: any) => {
+          console.log('addval=>', val);
+          alert(`Employee add success!`);
+          this._dialogRef.close();
+        },
+        error: (err: any) => {
+          console.error('add-err=>', err);
+        },
+      });
     }
   }
 

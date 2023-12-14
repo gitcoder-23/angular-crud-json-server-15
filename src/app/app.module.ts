@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 // Components
 import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, EmpAddEditComponent],
@@ -42,6 +43,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatNativeDateModule,
     // To make form dynamic
     ReactiveFormsModule,
+
+    // To manage api & Services need
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
