@@ -11,8 +11,14 @@ export class EmployeeServiceService {
   // Add Employee
 
   public addNewEmployee(edata: any): Observable<any> {
-    console.log('edata=>', edata);
+    // console.log('edata=>', edata);
 
     return this._http.post('http://localhost:3089/employees', edata);
+  }
+
+  // Get list all employees
+
+  public getAllEmployees(): Observable<any> {
+    return this._http.get('http://localhost:3089/employees');
   }
 }

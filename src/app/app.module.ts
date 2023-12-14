@@ -14,6 +14,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 // Date picker
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -21,8 +26,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 // Components
 import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, EmpAddEditComponent],
@@ -38,6 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatInputModule,
     MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     // Date picker
     MatDatepickerModule,
     MatNativeDateModule,

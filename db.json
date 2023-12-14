@@ -11,6 +11,18 @@
       "experience": "10",
       "package": "12",
       "id": 1
+    },
+    {
+      "firstName": "John",
+      "lastName": "Dan",
+      "email": "john@yahoo.com",
+      "dob": "2023-12-15T18:30:00.000Z",
+      "gender": "male",
+      "education": "Post Graduate",
+      "company": "Yahoo",
+      "experience": "6",
+      "package": "30",
+      "id": 2
     }
   ]
 }
