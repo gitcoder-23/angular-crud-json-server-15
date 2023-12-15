@@ -12,3 +12,6 @@ https://material.angular.io/
 
 // you-tut
 https://youtu.be/4mKY_yDq64g?si=BM4yvOVPyWmw-NdL
+
+// Hindi
+https://youtu.be/yQT5pDy7swM?si=4ZdkrrQFmJlaaZai
