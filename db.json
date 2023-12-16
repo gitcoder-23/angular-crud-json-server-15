@@ -1,18 +1,6 @@
 {
   "employees": [
     {
-      "firstName": "David Par",
-      "lastName": "Hall",
-      "email": "david@yahoo.com",
-      "dob": "2023-12-15T18:30:00.000Z",
-      "gender": "male",
-      "education": "Post Graduate",
-      "company": "Ford",
-      "experience": "4",
-      "package": "20",
-      "id": 7
-    },
-    {
       "firstName": "Jesoja",
       "lastName": "Jeso",
       "email": "fg@gmail.com",
@@ -59,6 +47,18 @@
       "experience": "10",
       "package": "30",
       "id": 14
+    },
+    {
+      "firstName": "Rani",
+      "lastName": "Kumari",
+      "email": "rani@yahoo.com",
+      "dob": "2023-12-20T18:30:00.000Z",
+      "gender": "female",
+      "education": "Graduate",
+      "company": "Google",
+      "experience": "5",
+      "package": "15",
+      "id": 15
     }
   ]
 }
